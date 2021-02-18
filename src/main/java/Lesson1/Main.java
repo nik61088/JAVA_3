@@ -8,7 +8,6 @@ public class Main {
         array.changeElement();
         System.out.println();
         array1.changeElement();
-
         System.out.println();
         array.arrayToArrayList();
         array1.arrayToArrayList();
