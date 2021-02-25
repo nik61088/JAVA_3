@@ -12,10 +12,18 @@ public class ClientAppOne {
             DataInputStream in = new DataInputStream(socket.getInputStream());
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
+
             new Thread(()->{
                 while (true){
                     try {
+                        ChatFileWriter fileWriter = new ChatFileWriter();
                         System.out.println(in.readUTF());
+
+                        File myfile = new File("fileClientOne.txt");
+                        fileWriter.fileWriteHystory(in.readUTF(), "", myfile);
+
+                        //fileWriter.getHystory(myfile);
+                        fileWriter.getHystoryTypeLines(myfile, 10);
 
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -26,6 +34,7 @@ public class ClientAppOne {
             Scanner scanner = new Scanner(System.in);
             while (!socket.isClosed()){
                 out.writeUTF(scanner.nextLine());
+
             }
         } catch (IOException e) {
             e.printStackTrace();

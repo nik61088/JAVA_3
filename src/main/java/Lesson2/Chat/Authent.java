@@ -1,5 +1,7 @@
 package Lesson2.Chat;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.*;
 import java.util.Set;
 
@@ -34,7 +36,6 @@ public class Authent {
                         return resultSet.getString("Nickname");
                     }
                 }
-
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (SQLException throwables) {

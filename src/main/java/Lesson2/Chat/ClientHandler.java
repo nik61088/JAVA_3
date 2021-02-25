@@ -40,7 +40,6 @@ public class ClientHandler {
     public void readMessage(){
         while (true){
             try {
-
                 String message = in.readUTF();
                 System.out.println(name+": "+message);
 
@@ -78,8 +77,8 @@ public class ClientHandler {
                     } else {
                         sendMessage("[INFO] Wrong login or password");
                     }
+                    }
                 }
-            }
         }catch (Exception e){
             throw new RuntimeException("SWW", e);
         }
