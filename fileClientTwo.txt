@@ -1,0 +1,2 @@
+: [INFO] Auth Ok
+: nickname1: пишу с клиента 1

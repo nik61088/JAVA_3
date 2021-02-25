@@ -1,0 +1,4 @@
+nickname1: - fileServerChat.txt
+nickname1: test
+nickname1: /end
+nickname1: get me hystory
