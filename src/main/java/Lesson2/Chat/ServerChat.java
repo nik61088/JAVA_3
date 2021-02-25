@@ -17,7 +17,7 @@ public class ServerChat implements Chat {
 
     private void start(){
         try {
-            serverSocket = new ServerSocket (8888);
+            serverSocket = new ServerSocket (8080);
             clients = new HashSet<>();
             authenticationService = new Authent();
 

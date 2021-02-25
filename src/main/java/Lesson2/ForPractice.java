@@ -2,9 +2,9 @@ package Lesson2;
 
 import java.sql.*;
 
-public class Main {
+public class ForPractice { // ДЛЯ ПРАКТИКИ
     public static void main(String[] args) throws Exception {
-        Connection connection = getConnection();
+
 
 
     }

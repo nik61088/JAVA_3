@@ -1,15 +1,14 @@
 package Lesson2.Chat;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
 public class ClientAppOne {
     public static void main(String[] args) {
+
         try {
-            Socket socket = new Socket("127.0.0.1",8888);
+            Socket socket = new Socket("127.0.0.1",8080);
             DataInputStream in = new DataInputStream(socket.getInputStream());
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
@@ -17,6 +16,7 @@ public class ClientAppOne {
                 while (true){
                     try {
                         System.out.println(in.readUTF());
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

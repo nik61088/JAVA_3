@@ -1,8 +1,6 @@
 package Lesson2.Chat;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 
 public class ClientHandler {
@@ -42,8 +40,10 @@ public class ClientHandler {
     public void readMessage(){
         while (true){
             try {
+
                 String message = in.readUTF();
                 System.out.println(name+": "+message);
+
                 if (message.equals("/end")) {
                     return;
                 }
@@ -55,6 +55,7 @@ public class ClientHandler {
         }
 
     }
+
     private void doAuth() {
         sendMessage("Please enter credentials. Sample [-auth login password]");
         try {

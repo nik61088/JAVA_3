@@ -23,26 +23,23 @@ public class Authent {
     public String findNicknameLoginAndPassword(String login, String password) {
         Connection connection;
         Statement statement;
-        ResultSet resultSet = null; // Результатом запроса SELECT в базу является таблица (набор строк),
-                            // которая сохраняется в объекте ResultSet
+        ResultSet resultSet = null;
 
+            try {
+                connection = getConnection();
+                statement = connection.createStatement();
+                resultSet = statement.executeQuery("select * from Entries");
+                while(resultSet.next()) {
+                    if (resultSet.getString("Login").equals(login) && resultSet.getString("Password").equals(password)) {
+                        return resultSet.getString("Nickname");
+                    }
+                }
 
-        try {
-             connection = getConnection();
-             statement = connection.createStatement();
-             resultSet = statement.executeQuery("select * from Entries");
-
-            if (resultSet.getString("Login").equals(login) && resultSet.getString("Password").equals(password)){
-                return resultSet.getString("Nickname");
-            }
-            return null;
-
-        } catch (ClassNotFoundException e) {
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-
 
 
 //        for (CredentialsEntry entry: entries) {
@@ -50,7 +47,8 @@ public class Authent {
 //                return entry.getNickname();
 //            }
 //        }
-       return null;
+            return null;
+
     }
 
     public static class CredentialsEntry{
