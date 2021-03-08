@@ -1,14 +1,19 @@
 package Lesson2.Chat;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashSet;
 import java.util.Set;
 
+
 public class ServerChat implements Chat {
     private ServerSocket serverSocket;
     private Set<ClientHandler> clients;
     private Authent authenticationService;
+    Logger log = LogManager.getLogger(ServerChat.class);
 
 
     public ServerChat(){
@@ -23,10 +28,12 @@ public class ServerChat implements Chat {
 
         while (true){
 
-                System.out.println("Сервер ждет подключения");
+                //System.out.println("Сервер ждет подключения");
+                log.info("Сервер ждет подключения");
                 Socket socket = serverSocket.accept();
                 ClientHandler client = new ClientHandler(socket, this);
-                System.out.println("Клиент залогинился");
+                //System.out.println("Клиент залогинился");
+                log.info("Клиент залогинился");
             }
             }catch (Exception e){
             e.printStackTrace();
@@ -35,6 +42,7 @@ public class ServerChat implements Chat {
 
     public void messageToAll(String message){
         for (ClientHandler client: clients) {
+            log.info("Клиент прислал сообщение");
             client.sendMessage(message);
         }
     }

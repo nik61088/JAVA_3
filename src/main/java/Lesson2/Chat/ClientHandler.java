@@ -1,9 +1,14 @@
 package Lesson2.Chat;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.*;
 import java.net.Socket;
 
 public class ClientHandler {
+    Logger log = LogManager.getLogger(ServerChat.class);
+
     private String name;
     private DataInputStream in;
     private DataOutputStream out;
@@ -45,6 +50,7 @@ public class ClientHandler {
                 System.out.println(name+": "+message);
 
                 if (message.equals("/end")) {
+                    log.info("Клиент прислал команду выхода");
                     return;
                 }
                 chat.messageToAll(name + ": "+message);
@@ -81,6 +87,7 @@ public class ClientHandler {
                 }
             }
         }catch (Exception e){
+            log.info("ошибка подключения");
             throw new RuntimeException("SWW", e);
         }
     }
