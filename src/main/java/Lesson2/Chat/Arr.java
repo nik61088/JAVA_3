@@ -13,4 +13,19 @@ public class Arr {
         throw new RuntimeException();
     }
 
+    public boolean oneOrFour(int[] arr) {
+        boolean yesOneOrFour = false;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != 1 && arr[i] != 4){
+                yesOneOrFour = false;
+            }
+            if (arr[i] == 1 || arr[i] == 4) {
+                yesOneOrFour = true;
+            }
+
+        }
+        return yesOneOrFour;
+    }
+
 }
